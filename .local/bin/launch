@@ -1,0 +1,3 @@
+#!/bin/bash
+# launch gui apps and ignore their output
+("$@" &>/dev/null &)

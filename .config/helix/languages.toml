@@ -1,0 +1,34 @@
+[language-server.godot]
+command = "nc" 
+args = [ "127.0.0.1", "6005"]
+
+[[language]]
+name = "gdscript"
+language-servers = [ "godot" ]
+
+[[language]]
+name = "java"
+scope = "source.java"
+injection-regex = "java"
+file-types = ["java"]
+roots = [".git", "build.gradle", "pom.xml"]
+indent = { tab-width = 4, unit = "    " }
+language-servers = [ "jdtls" ]
+
+[[language]]
+name = "rust"
+file-types = ["rs"]
+roots = ["Cargo.lock", "Cargo.toml", ".git"]
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+timeout = 120
+
+[language-server.rust-analyzer.config]
+cachePriming.enable = false
+diagnostics.experimental.enable = true
+inlayHints.bindingModeHints.enable = false
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
