@@ -1,6 +1,6 @@
 # custom functions
 function spotdl { ~/.local/bin/spotdl download "$1" --output ~/sync/tunes; }
-function upload { scp -P 22222 "$1" shinysocks@pie:/home/shinysocks/shinysocks.net/share; }
+function host { ssh -fNR 8888:localhost:8888 pie; }
 
 # environment variables for functional editors
 export PATH="/home/shinysocks/.local/bin:/home/shinysocks/desktop/bin:$PATH"
