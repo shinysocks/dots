@@ -1,0 +1,4 @@
+#!/bin/bash
+
+INFO=$(sudo -k cat /home/shinysocks/sync/recovery/passwords | grep $1)
+echo $INFO | cut -d "|" -f2
