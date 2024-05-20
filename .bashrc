@@ -3,6 +3,7 @@ function spotdl { ~/.local/bin/spotdl download "$1" --output ~/sync/tunes; }
 function host { ssh -fNR 8888:localhost:8888 pie; }
 function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
 function cat { bat $@; }
+function pirate { mov-cli -s films "$@"; }
 
 # environment variables for functional editors
 export PATH="/home/shinysocks/.local/bin:/home/shinysocks/desktop/bin:$PATH"

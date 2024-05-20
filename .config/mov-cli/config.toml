@@ -1,17 +1,13 @@
 [mov-cli]
 version = 1
 player = "mpv"
-debug = false
 editor = "hx"
-
-[mov-cli.ui]
-fzf = true
 
 [mov-cli.scrapers]
 default = "films.default"
 
 [mov-cli.plugins]
-films = "mov-cli-films"
+films = "film-central"
 
 [mov-cli.downloads]
 save_path = "~/desktop"
