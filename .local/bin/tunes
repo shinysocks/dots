@@ -1,6 +1,6 @@
 #!/bin/bash
 export IFS=$'\n'
-location=~/desktop/chill/
+location=~/sync/tunes/
 
 for tune in $(ls $location | grep "$1" | shuf);
 do
