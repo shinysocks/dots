@@ -1,9 +1,10 @@
 #!/bin/bash
 export IFS=$'\n'
+location=~/desktop/chill/
 
-for tune in $(ls ~/sync/tunes | grep "$1" | shuf);
+for tune in $(ls $location | grep "$1" | shuf);
 do
   echo $tune
-  nice -20 mpv --really-quiet --no-video ~/sync/tunes/"$tune"
+  nice -20 mpv --really-quiet --no-video $location"$tune"
 done
 
