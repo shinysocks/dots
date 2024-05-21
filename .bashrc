@@ -1,32 +1,3 @@
-# custom functions
-function spotdl { ~/.local/bin/spotdl download "$1" --output ~/sync/tunes; }
-function host { ssh -fNR 8888:localhost:8888 pie; }
-function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
-function cat { batcat $@; }
-function pirate { mov-cli -s films "$@"; }
-
-# environment variables for functional editors
-export PATH="/home/shinysocks/.local/bin:/home/shinysocks/desktop/bin:$PATH"
-export VISUAL="/home/shinysocks/.cargo/bin/hx"
-export EDITOR="/home/shinysocks/.cargo/bin/hx"
-
-# custom aliases
-alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
-alias downup='docker compose down ; docker compose up -d'
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y'
-alias ssh="kitty +kitten ssh"
-alias croc='croc --overwrite --yes'
-alias nmtui='nmcli -p dev wifi rescan ; nmtui'
-alias zzz='systemctl suspend ; exit'
-alias ..='cd ..'
-
-eval "$(starship init bash)"
-source "$HOME/.cargo/env"
-
-# default .bashrc stuffs
 case $- in
     *i*) ;;
       *) return;;
@@ -74,7 +45,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. "$HOME/.cargo/env"
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+# load custom stuffs
+source /home/shinysocks/.config/bash
