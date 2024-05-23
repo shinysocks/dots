@@ -2,7 +2,7 @@
 version = 1
 player = "mpv"
 editor = "hx"
-fxf = false
+fzf = false
 
 [mov-cli.scrapers]
 default = "films.default"
