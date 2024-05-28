@@ -2,7 +2,7 @@
 export IFS=$'\n'
 location=~/sync/tunes/
 
-for tune in $(ls $location | grep "$1" | shuf);
+for tune in $(ls $location | grep -E "$1" | shuf);
 do
   echo $tune
   nice -20 mpv --really-quiet --no-video $location"$tune"

@@ -11,4 +11,4 @@ default = "films.default"
 films = "film-central"
 
 [mov-cli.downloads]
-save_path = "/home/shinysocks/desktop/"
+save_path = "/home/shinysocks/desktop/movies/"

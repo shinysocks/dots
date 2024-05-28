@@ -1,0 +1,11 @@
+WORK_DIR="/home/shinysocks/.steam/steam/steamapps/common/Rain World"
+PROTON="/home/shinysocks/.steam/steam/steamapps/common/Proton - Experimental/proton"
+
+export STEAM_COMPAT_DATA_PATH="/home/shinysocks/.steam/steam/steamapps/compatdata/312520/pfx"
+export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/root"
+
+(cd "$WORK_DIR" ; "$PROTON" run ./RainWorld.exe &>/dev/null &)
+
+
+
+

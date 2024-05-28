@@ -7,7 +7,7 @@ function clear_clip {
   sleep 30 ; wl-copy ""
 }
 
-INFO=$(sudo -k cat $PASSWORDS | grep $1)
+INFO=$(sudo -k cat $PASSWORDS | grep -m 1 $1)
 echo -n $INFO | cut -d "|" -f2 | tr -d '\n' | wl-copy
 clear_clip &
 
