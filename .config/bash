@@ -1,6 +1,7 @@
+#!/bin/bash
+
 # custom functions
 function spotdl { ~/.local/bin/spotdl download "$1" --output ~/sync/tunes; }
-function host { ssh -fNR 8888:localhost:8888 pie; }
 function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
 function cat { batcat $@; }
 function pirate { mov-cli -s films "$@"; }
@@ -30,3 +31,8 @@ source "$HOME/.cargo/env"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+
+# tunnel 8888 out
+launch /usr/bin/ssh -fNR 8888:localhost:8888 pie
+
+
