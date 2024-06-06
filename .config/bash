@@ -12,12 +12,13 @@ export VISUAL="/home/shinysocks/.cargo/bin/hx"
 export EDITOR="/home/shinysocks/.cargo/bin/hx"
 export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
+export DXVK_AYSNC=1
 
 # custom aliases
+alias rl='env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2 ; killall lutris'
 alias host='launch /usr/bin/ssh -fNR 8888:localhost:8888 pie'
 alias android='/usr/lib/virtualbox/VirtualBoxVM --comment "android" --startvm "{61eadae0-80a1-438f-abe8-4912f3166dff}"'
 alias windows='/usr/lib/virtualbox/VirtualBoxVM --comment "windows" --startvm "{392a8f8b-186e-4f50-baf5-a5781b742162}"'
-alias magic='env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/16'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
 alias downup='docker compose down ; docker compose up -d'
 alias l='ls -htlA'
