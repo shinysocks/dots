@@ -8,7 +8,3 @@ export STEAM_COMPAT_DATA_PATH="$HOME/.steam/steam/steamapps/compatdata/312520/pf
 export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.steam/root"
 
 (cd "$WORK_DIR" ; "$PROTON" run ./RainWorld.exe &>/dev/null &)
-
-
-
-
