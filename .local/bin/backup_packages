@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PACKAGES=~/sync/recovery/packages
+
+function newline { echo >> $PACKAGES; }
+
+echo "backing up local packages..."
+
+# backup packages installed with brew
+echo "-----" >> $PACKAGES
+echo "brew: " > $PACKAGES
+newline
+brew leaves >> $PACKAGES
+
+# backup packages installed with apt
+newline
+echo "-----" >> $PACKAGES
+echo "apt: " >> $PACKAGES
+newline
+apt-mark showmanual | grep -v lib >> $PACKAGES
+
+# backup packages installed with pip
+newline
+echo "-----" >> $PACKAGES
+echo "pip: " >> $PACKAGES
+newline
+pip list --not-required --format=freeze | awk -F "==" '{ print $1 }' >> $PACKAGES
+
+echo "local packages backed up to [ ~/sync/recovery/packages ]"
