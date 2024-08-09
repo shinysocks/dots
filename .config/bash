@@ -14,7 +14,7 @@ export memories="/home/shinysocks/sync/memories/"
 export DXVK_AYSNC=1
 
 # custom aliases
-alias host='launch /usr/bin/ssh -fNR 8888:localhost:3000 pie'
+alias host='launch /usr/bin/ssh -fNR 8888:localhost:8888 pie'
 alias android='launch /usr/lib/virtualbox/VirtualBoxVM --comment "android" --startvm "{61eadae0-80a1-438f-abe8-4912f3166dff}"'
 alias windows='launch /usr/lib/virtualbox/VirtualBoxVM --comment "windows" --startvm "{392a8f8b-186e-4f50-baf5-a5781b742162}"'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
@@ -37,3 +37,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # delete screenshots directory
 rm -rf ~/Screenshots
 
+# unlimited history size
+HISTSIZE=-1
+HISTFILESIZE=-1
