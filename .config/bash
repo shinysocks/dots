@@ -40,3 +40,6 @@ rm -rf ~/Screenshots
 # unlimited history size
 HISTSIZE=-1
 HISTFILESIZE=-1
+
+
+

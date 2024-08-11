@@ -1,0 +1,10 @@
+#!/bin/bash
+export IFS=$'\n'
+
+target="/media/shinysocks/6132-3262/tunes"
+
+for tune in $(ls -ht ~/sync/tunes | head -n 200);
+do
+  cp ~/sync/tunes/"$tune" $target
+  echo "$tune -> $target"
+done
