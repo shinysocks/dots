@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # custom functions
-function spotdl { ~/.local/bin/spotdl download "$1" --output ~/sync/tunes; }
+function spotdl { python3 -m spotdl download "$1" --output ~/sync/tunes; }
 function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
 function pirate { mov-cli -s films "$@"; }
 
 # environment variables for functional editors
-export PATH="/home/shinysocks/.local/bin:/home/shinysocks/.rainy$PATH"
+export PATH="/home/shinysocks/.local/bin$PATH"
 export VISUAL="/home/shinysocks/.cargo/bin/hx"
 export EDITOR="/home/shinysocks/.cargo/bin/hx"
 export tunes="/home/shinysocks/sync/tunes/"

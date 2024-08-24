@@ -2,9 +2,23 @@
 export IFS=$'\n'
 
 target="/media/shinysocks/6132-3262/tunes"
+source="/home/shinysocks/sync/tunes/"
 
-for tune in $(ls -ht ~/sync/tunes | head -n 200);
+rm -rf $target/*
+echo copying latest tunes..
+for tune in $(ls -ht $source | head -n 50);
 do
-  cp ~/sync/tunes/"$tune" $target
+  cp $source"$tune" $target
   echo "$tune -> $target"
 done
+
+echo copying some randoms
+for tune in $(ls -ht $source | shuf | head -n 200);
+do
+  cp -n $source"$tune" $target
+  echo "$tune -> $target?"
+done
+
+sleep 2
+umount /media/shinysocks/6132-3262/ && echo umounted nokia storage
+notify-send "nokia tunes updated, remove sd."

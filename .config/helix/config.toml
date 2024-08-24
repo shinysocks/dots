@@ -3,6 +3,7 @@ theme = "catppuccin_americano"
 [editor]
 true-color = true
 auto-save = true
+auto-format = false
 line-number = "absolute"
 # auto-pairs = true
 
@@ -24,7 +25,7 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = true # false means show hidden files
+hidden = false # false means show hidden files
 
 [editor.smart-tab]
 enable = true # not sure..
