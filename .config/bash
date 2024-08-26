@@ -2,6 +2,7 @@
 
 # custom functions
 function spotdl { python3 -m spotdl download "$1" --output ~/sync/tunes; }
+function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "~/desktop/%(title)s.mp3"; }
 function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
 function pirate { mov-cli -s films "$@"; }
 
