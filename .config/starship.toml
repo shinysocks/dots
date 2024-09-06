@@ -7,5 +7,5 @@ success_symbol = "[](bold magenta)"
 error_symbol = "[ cooked..](bold red)"
 
 [directory]
-format = "[ $path ](bg:#000001 fg:bold #a6e3a1)[](bg:#000000 fg:bold #000001)"
+format = "[ $path ](bg:#000001 fg:bold #ff73f1)[](bg:#000000 fg:bold #000001)"
 truncation_length = 10

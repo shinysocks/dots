@@ -2,14 +2,14 @@
 
 # custom functions
 function spotdl { python3 -m spotdl download "$1" --output ~/sync/tunes; }
-function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "~/desktop/%(title)s.mp3"; }
+function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "$HOME/desktop/%(title)s.mp3"; }
 function bgcolor { gsettings set org.gnome.desktop.background primary-color "'#$1'"; }
 function pirate { mov-cli -s films "$@"; }
 
 # environment variables for functional editors
-export PATH="/home/shinysocks/.local/bin$PATH"
-export VISUAL="/home/shinysocks/.cargo/bin/hx"
-export EDITOR="/home/shinysocks/.cargo/bin/hx"
+export PATH="/home/shinysocks/.local/bin:/usr/local/texlive/2024/bin/x86_64-linux$PATH"
+export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
+export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
 export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
 export DXVK_AYSNC=1
