@@ -6,14 +6,14 @@ source="/home/shinysocks/sync/tunes/"
 
 rm -rf $target/*
 echo copying latest tunes..
-for tune in $(ls -ht $source | head -n 25);
+for tune in $(ls -ht $source | head -n 50);
 do
   cp $source"$tune" $target
   echo "$tune -> $target"
 done
 
 echo copying some randoms
-for tune in $(ls -ht $source | shuf | head -n 225);
+for tune in $(ls -ht $source | shuf | head -n 100);
 do
   cp -n $source"$tune" $target
   echo "$tune -> $target?"

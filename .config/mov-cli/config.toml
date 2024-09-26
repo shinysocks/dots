@@ -1,7 +1,7 @@
 [mov-cli]
 version = 1
 player = "mpv"
-editor = "hx"
+editor = "nvim"
 fzf = false
 
 [mov-cli.scrapers]

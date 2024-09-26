@@ -78,22 +78,9 @@ local lsp_attach = function(_, bufnr)
   vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
 
-lsp_zero.extend_lspconfig({
-  sign_text = true,
-  lsp_attach = lsp_attach,
-})
-
-lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({buffer = bufnr})
-end)
-
 require("mason-lspconfig").setup {
   ensure_installed = lsp_servers,
   automatic_installation = true,
-
-  handlers = {
-    lsp_zero.default_setup,
-  },
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -177,7 +164,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-  ensure_installed = "all",
+  ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "gdscript", "git_config", "gitcommit", "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown", "nginx", "python", "robots", "rust", "sql", "ssh_config", "toml", "typescript", "vim", "xml", "yaml" },
   sync_install = false,
   highlight = { enable = true },
   indent = { enable = true },
