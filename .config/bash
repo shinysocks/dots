@@ -4,6 +4,7 @@
 function spotdl { python3 -m spotdl download "$1" --output ~/sync/tunes; }
 function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "$HOME/desktop/%(title)s.mp3"; }
 function texcompile { cp "$1" "$1.bak" && xelatex -halt-on-error "$1" && rm *.log *.aux; }
+function upload { curl -# https://shinysocks.net/upload -T "$1" | cat; }
 
 # environment variables for functional editors
 export PATH="/home/shinysocks/.local/bin:/usr/local/texlive/2024/bin/x86_64-linux$PATH"
@@ -34,6 +35,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # delete screenshots directory
 rm -rf ~/Screenshots
 
@@ -41,5 +43,5 @@ rm -rf ~/Screenshots
 HISTSIZE=-1
 HISTFILESIZE=-1
 
-
-
+# set a random image
+viu -a -x $(($COLUMNS-(($COLUMNS/4)))) -w $(($COLUMNS/4)) "$memories/$(ls -1 $memories | grep -iE 'jpg|png|webp|jpeg' | shuf | head -n 1)"

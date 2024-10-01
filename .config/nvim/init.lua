@@ -58,9 +58,8 @@ require('mason').setup({
   }
 })
 
-local lsp_zero = require('lsp-zero')
 local cmp = require('cmp')
-local lsp_servers = { 'bashls', 'cssls', 'denols', 'docker_compose_language_service', 'dockerls', 'html', 'jsonls', 'lua_ls', 'grammarly', 'pylsp', 'rust_analyzer', 'texlab', 'yamlls', 'jdtls' }
+local lsp_servers = { 'bashls', 'cssls', 'denols', 'docker_compose_language_service', 'dockerls', 'html', 'jsonls', 'lua_ls', 'grammarly', 'pylsp', 'rust_analyzer', 'texlab', 'yamlls', 'jdtls', 'groovyls' }
 
 
 local lsp_attach = function(_, bufnr)
@@ -122,6 +121,11 @@ require('lspconfig').rust_analyzer.setup {
 }
 
 require('lspconfig').cssls.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').groovyls.setup {
   capabilities = capabilities,
   on_attach = lsp_attach,
 }
