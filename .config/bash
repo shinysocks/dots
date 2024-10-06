@@ -14,11 +14,7 @@ export memories="/home/shinysocks/sync/memories/"
 export DXVK_AYSNC=1
 
 # custom aliases
-alias host='launch /usr/bin/ssh -fNR 8888:localhost:8888 pie'
-alias android='launch /usr/lib/virtualbox/VirtualBoxVM --comment "android" --startvm "{61eadae0-80a1-438f-abe8-4912f3166dff}"'
-alias windows='launch /usr/lib/virtualbox/VirtualBoxVM --comment "windows" --startvm "{392a8f8b-186e-4f50-baf5-a5781b742162}"'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
-alias downup='docker compose down ; docker compose up -d'
 alias l='ls -htlA'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; bash ~/.local/bin/backup_packages'
 alias ssh="kitty +kitten ssh"
@@ -41,6 +37,3 @@ rm -rf ~/Screenshots
 # unlimited history size
 HISTSIZE=-1
 HISTFILESIZE=-1
-
-# set a random image
-viu -a -x $(($COLUMNS-(($COLUMNS/4)))) -w $(($COLUMNS/4)) "$memories/$(ls -1 $memories | grep -iE 'jpg|png|webp|jpeg' | shuf | head -n 1)"
