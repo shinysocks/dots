@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGES=~/sync/recovery/packages
+PACKAGES=~/sync/archive/recovery/packages
 
 function newline { echo >> $PACKAGES; }
 
@@ -26,4 +26,4 @@ echo "pip: " >> $PACKAGES
 newline
 pip list --not-required --format=freeze | awk -F "==" '{ print $1 }' >> $PACKAGES
 
-echo "local packages backed up to [ ~/sync/recovery/packages ]"
+echo "local packages backed up to [ ~/sync/archive/recovery/packages ]"

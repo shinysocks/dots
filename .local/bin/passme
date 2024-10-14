@@ -1,7 +1,7 @@
 #!/bin/bash
 # uses wl-clipboard [https://github.com/bugaevc/wl-clipboard]
 
-PASSWORDS=/home/shinysocks/sync/recovery/passwords 
+PASSWORDS=/home/shinysocks/sync/archive/recovery/passwords 
 
 function clear_clip {
   sleep 30 ; wl-copy ""
