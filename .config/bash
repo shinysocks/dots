@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # custom functions
+function lamp { kasa --host 192.168.0.107 hsv $1 $2 $3; }
 function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes; }
 function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "$HOME/desktop/%(title)s.mp3"; }
 function upload { curl -# https://shinysocks.net/upload -T "$1" | cat; }

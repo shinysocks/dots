@@ -35,7 +35,7 @@ require("lazy").setup({
     { "hrsh7th/nvim-cmp", "hrsh7th/cmp-vsnip", },
     { "m4xshen/autoclose.nvim", },
   },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
 })
 
 -- autoclose setup
