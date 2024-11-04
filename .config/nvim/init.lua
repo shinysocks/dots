@@ -1,4 +1,3 @@
-
 ---------------------
 --  NEOVIM CONFIG  --
 ---------------------
@@ -33,19 +32,21 @@ require("lazy").setup({
     { "VonHeikemen/lsp-zero.nvim", branch = 'v4.x'},
     { "hrsh7th/cmp-nvim-lsp", },
     { "hrsh7th/nvim-cmp", "hrsh7th/cmp-vsnip", },
-    { "m4xshen/autoclose.nvim", },
+    -- { "m4xshen/autoclose.nvim", },
+    { 'xiyaowong/transparent.nvim', },
+    { "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' } },
   },
   checker = { enabled = true, notify = false },
 })
 
 -- autoclose setup
-require("autoclose").setup({
-  options = {
-    disabled_filetypes = { "text" },
-    pair_spaces = true,
-    auto_indent = true,
-  },
-})
+-- require("autoclose").setup({
+--   options = {
+--     disabled_filetypes = { "text" },
+--     pair_spaces = true,
+--     auto_indent = true,
+--   },
+-- })
 
 -- mason / lsp setup
 require('mason').setup({
@@ -65,7 +66,7 @@ local lsp_servers = { 'bashls', 'cssls', 'denols', 'docker_compose_language_serv
 local lsp_attach = function(_, bufnr)
   local opts = {buffer = bufnr}
 
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+  vim.keymap.set('n', 'gk', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -74,7 +75,7 @@ local lsp_attach = function(_, bufnr)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
 
 require("mason-lspconfig").setup {
@@ -162,8 +163,8 @@ cmp.setup {
 
 -- telescope keybinds
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 
 
 -- treesitter
@@ -174,6 +175,64 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
+-- lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = { left = '|', right = '|'},
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 500,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {
+        'branch',
+      {
+        'diagnostics',
+        symbols = { error = '⨂ ', warn = '', info = '', hint = '' },
+      },
+    },
+    lualine_c = {
+      {
+        'filename',
+        symbols = {
+          modified = '●';
+          readonly = '-',
+          unnamed = 'unnamed',
+          newfile = 'new',
+        },
+      },
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {},
+}
 
 -- customize catppuccin theme
 require("catppuccin").setup({
@@ -188,7 +247,7 @@ require("catppuccin").setup({
     term_colors = true,
     dim_inactive = {
         enabled = true,
-        shade = "dark",
+        shade = "transparent_background",
         percentage = 0.15,
     },
     no_italic = false,
@@ -214,4 +273,28 @@ vim.opt.relativenumber = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.statusline = '3'
+vim.opt.signcolumn = 'no'
+vim.g.transparent_enabled = true
+
+-- terminal
+vim.api.nvim_command("autocmd TermOpen * startinsert")
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")
+vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no")
+
+-- custom keybindings
+vim.keymap.set('t', '<esc>', "<C-\\><C-n>") -- fix terminal escape
+vim.keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>");
+vim.keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>");
+vim.keymap.set("n", "U", "<Cmd>redo<CR>");
+vim.keymap.set("n", "<leader>e", "$");
+
+-- DOESN'T WORK????
+vim.keymap.set('n', '<leader>y', '<Cmd>y"*<CR>', {})
+vim.keymap.set('n', '<leader>p', '<Cmd>p"*<CR>', {})
+
+-- replace ^6 to switch between buffers (<leader>b)
+-- fix import action menu
+-- remap switching between splits and creating splits
+-- find and replace keybindings
 
