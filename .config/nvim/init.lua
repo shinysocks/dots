@@ -287,14 +287,18 @@ vim.keymap.set('t', '<esc>', "<C-\\><C-n>") -- fix terminal escape
 vim.keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>");
 vim.keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>");
 vim.keymap.set("n", "U", "<Cmd>redo<CR>");
-vim.keymap.set("n", "<leader>e", "$");
+vim.keymap.set("n", "E", "$");
+vim.keymap.set("n", "dE", "d$");
+vim.keymap.set('n', '<leader>b', '<C-6>', {}) -- switch to previous
+vim.keymap.set('n', 't', '<C-w>', {})
+vim.keymap.set('n', 'th', '<C-w>s', {})
+
 
 -- DOESN'T WORK????
 vim.keymap.set('n', '<leader>y', '<Cmd>y"*<CR>', {})
 vim.keymap.set('n', '<leader>p', '<Cmd>p"*<CR>', {})
 
--- replace ^6 to switch between buffers (<leader>b)
+-- system copy and paste
 -- fix import action menu
--- remap switching between splits and creating splits
 -- find and replace keybindings
 
