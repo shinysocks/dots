@@ -35,7 +35,9 @@ require("lazy").setup({
     -- { "m4xshen/autoclose.nvim", },
     { 'xiyaowong/transparent.nvim', },
     { "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { 'Chaitanyabsprip/fastaction.nvim', opts = {}},
   },
+
   checker = { enabled = true, notify = false },
 })
 
@@ -75,7 +77,7 @@ local lsp_attach = function(_, bufnr)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set('n', 'ga', '<cmd>lua require("fastaction").code_action()<CR>', { buffer = bufnr })
 end
 
 require("mason-lspconfig").setup {
@@ -292,13 +294,9 @@ vim.keymap.set("n", "dE", "d$");
 vim.keymap.set('n', '<leader>b', '<C-6>', {}) -- switch to previous
 vim.keymap.set('n', 't', '<C-w>', {})
 vim.keymap.set('n', 'th', '<C-w>s', {})
+vim.keymap.set('n', '<leader>y', '"+y', {})
+vim.keymap.set('v', '<leader>y', '"+y', {})
+vim.keymap.set('n', '<leader>p', '"+p', {})
 
-
--- DOESN'T WORK????
-vim.keymap.set('n', '<leader>y', '<Cmd>y"*<CR>', {})
-vim.keymap.set('n', '<leader>p', '<Cmd>p"*<CR>', {})
-
--- system copy and paste
--- fix import action menu
--- find and replace keybindings
-
+-- SEARCH AND REPLACE
+-- :%s/search/replace/(c) <- to confirm
