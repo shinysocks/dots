@@ -32,23 +32,22 @@ require("lazy").setup({
     { "VonHeikemen/lsp-zero.nvim", branch = 'v4.x'},
     { "hrsh7th/cmp-nvim-lsp", },
     { "hrsh7th/nvim-cmp", "hrsh7th/cmp-vsnip", },
-    -- { "m4xshen/autoclose.nvim", },
+    { "m4xshen/autoclose.nvim", },
     { 'xiyaowong/transparent.nvim', },
     { "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    { 'Chaitanyabsprip/fastaction.nvim', opts = {}},
   },
 
   checker = { enabled = true, notify = false },
 })
 
 -- autoclose setup
--- require("autoclose").setup({
---   options = {
---     disabled_filetypes = { "text" },
---     pair_spaces = true,
---     auto_indent = true,
---   },
--- })
+require("autoclose").setup({
+  options = {
+    disabled_filetypes = { "text" },
+    pair_spaces = true,
+    auto_indent = true,
+  },
+})
 
 -- mason / lsp setup
 require('mason').setup({
@@ -77,7 +76,7 @@ local lsp_attach = function(_, bufnr)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set('n', 'ga', '<cmd>lua require("fastaction").code_action()<CR>', { buffer = bufnr })
+  vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { buffer = bufnr })
 end
 
 require("mason-lspconfig").setup {

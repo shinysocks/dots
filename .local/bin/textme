@@ -1,0 +1,13 @@
+#!/bin/bash
+
+FROM='email@gmail.com'
+TO='123456789@tmomail.net'
+APP_PASSWORD=''
+
+curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
+  --mail-from $FROM \
+  --mail-rcpt $TO \
+  --user "$FROM:$APP_PASSWORD" \
+  -T <(echo -e "message")
+
+echo sent.
