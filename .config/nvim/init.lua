@@ -43,7 +43,7 @@ require("lazy").setup({
 -- autoclose setup
 require("autoclose").setup({
   options = {
-    disabled_filetypes = { "text" },
+    disabled_filetypes = { "text", "latex", "texlab", "tex" },
     pair_spaces = true,
     auto_indent = true,
   },
@@ -61,12 +61,11 @@ require('mason').setup({
 })
 
 local cmp = require('cmp')
-local lsp_servers = { 'bashls', 'cssls', 'denols', 'docker_compose_language_service', 'dockerls', 'html', 'jsonls', 'lua_ls', 'grammarly', 'pylsp', 'rust_analyzer', 'texlab', 'yamlls', 'jdtls', 'groovyls' }
+local lsp_servers = { 'kotlin_language_server', 'bashls', 'cssls', 'docker_compose_language_service', 'dockerls', 'html', 'jsonls', 'lua_ls', 'texlab', 'yamlls', 'jdtls', 'groovyls', 'ts_ls' }
 
 
 local lsp_attach = function(_, bufnr)
   local opts = {buffer = bufnr}
-
   vim.keymap.set('n', 'gk', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -76,7 +75,7 @@ local lsp_attach = function(_, bufnr)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', { buffer = bufnr })
+  vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 require("mason-lspconfig").setup {
@@ -92,7 +91,7 @@ require('lspconfig').jdtls.setup {
   on_attach = lsp_attach,
 }
 
-require('lspconfig').denols.setup {
+require('lspconfig').gradle_ls.setup {
   capabilities = capabilities,
   on_attach = lsp_attach,
 }
@@ -112,22 +111,37 @@ require('lspconfig').texlab.setup {
   on_attach = lsp_attach,
 }
 
-require('lspconfig').pylsp.setup {
-  capabilities = capabilities,
-  on_attach = lsp_attach,
-}
-
-require('lspconfig').rust_analyzer.setup {
-  capabilities = capabilities,
-  on_attach = lsp_attach,
-}
-
 require('lspconfig').cssls.setup {
   capabilities = capabilities,
   on_attach = lsp_attach,
 }
 
 require('lspconfig').groovyls.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').ruff.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').jedi_language_server.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').pyright.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').kotlin_language_server.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
+require('lspconfig').ts_ls.setup {
   capabilities = capabilities,
   on_attach = lsp_attach,
 }
@@ -170,7 +184,7 @@ vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
 
 -- treesitter
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "gdscript", "git_config", "gitcommit", "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown", "nginx", "python", "robots", "rust", "sql", "ssh_config", "toml", "typescript", "vim", "xml", "yaml" },
+  ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "git_config", "gitcommit", "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown", "nginx", "python", "robots", "sql", "ssh_config", "toml", "typescript", "vim", "xml", "yaml", "kotlin" },
   sync_install = false,
   highlight = { enable = true },
   indent = { enable = true },
@@ -203,7 +217,7 @@ require('lualine').setup {
         'branch',
       {
         'diagnostics',
-        symbols = { error = '⨂ ', warn = '', info = '', hint = '' },
+        symbols = { error = '⏹ ', warn = '', info = '', hint = '' },
       },
     },
     lualine_c = {
@@ -289,6 +303,7 @@ vim.keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>");
 vim.keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>");
 vim.keymap.set("n", "U", "<Cmd>redo<CR>");
 vim.keymap.set("n", "E", "$");
+vim.keymap.set("v", "E", "$");
 vim.keymap.set("n", "dE", "d$");
 vim.keymap.set('n', '<leader>b', '<C-6>', {}) -- switch to previous
 vim.keymap.set('n', 't', '<C-w>', {})
@@ -297,5 +312,3 @@ vim.keymap.set('n', '<leader>y', '"+y', {})
 vim.keymap.set('v', '<leader>y', '"+y', {})
 vim.keymap.set('n', '<leader>p', '"+p', {})
 
--- SEARCH AND REPLACE
--- :%s/search/replace/(c) <- to confirm

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # custom functions
-function lamp { kasa --host 192.168.0.107 hsv $1 $2 $3; }
 function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes; }
 function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "$HOME/%(title)s.mp3"; }
 function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
@@ -12,7 +11,6 @@ export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
 export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
-export DXVK_AYSNC=1
 
 # custom aliases
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
@@ -24,12 +22,11 @@ alias zzz='sudo systemctl suspend'
 alias ..='cd ..'
 
 eval "$(starship init bash)"
-source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/home/shinysocks/.deno/bin:$PATH"
 
 # unlimited history size
 HISTSIZE=-1
