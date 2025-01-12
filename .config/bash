@@ -13,6 +13,7 @@ export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
 
 # custom aliases
+alias well='wine /home/shinysocks/.wine/drive_c/animal_well/animal_well.exe'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
 alias l='ls -1a'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; bash ~/.local/bin/backup_packages'
