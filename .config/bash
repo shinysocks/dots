@@ -1,21 +1,21 @@
 #!/bin/bash
 
 # custom functions
-function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes; }
-function ytdl { yt-dlp "$1" --extract-audio --audio-format mp3 -o "$HOME/%(title)s.mp3"; }
+function spotdl { python3 -m spotdl "$1" --output ~/sync/archive/tunes; }
 function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
 
 # environment variables for functional editors
 export PATH="/home/shinysocks/.local/bin:/usr/local/texlive/2024/bin/x86_64-linux$PATH"
 export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
-export tunes="/home/shinysocks/sync/tunes/"
-export memories="/home/shinysocks/sync/memories/"
+export tunes="/home/shinysocks/sync/archive/tunes/"
+export memories="/home/shinysocks/sync/archive/memories/"
 
 # custom aliases
-alias well='wine /home/shinysocks/.wine/drive_c/animal_well/animal_well.exe'
+alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
+alias well='wine /home/shinysocks/.wine/drive_c/animal_well/animal_well.exe &'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
-alias l='ls -1a'
+alias l='ls -1Aht'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; bash ~/.local/bin/backup_packages'
 alias ssh="kitty +kitten ssh"
 alias croc='croc --overwrite --yes'

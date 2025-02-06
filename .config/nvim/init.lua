@@ -146,6 +146,11 @@ require('lspconfig').ts_ls.setup {
   on_attach = lsp_attach,
 }
 
+require('lspconfig').clangd.setup {
+  capabilities = capabilities,
+  on_attach = lsp_attach,
+}
+
 cmp.setup {
   sources = {
     { name = 'nvim_lsp' },

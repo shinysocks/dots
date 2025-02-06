@@ -19,11 +19,4 @@ echo "apt: " >> $PACKAGES
 newline
 apt-mark showmanual | grep -v lib >> $PACKAGES
 
-# backup packages installed with pip
-newline
-echo "-----" >> $PACKAGES
-echo "pip: " >> $PACKAGES
-newline
-pip list --not-required --format=freeze | awk -F "==" '{ print $1 }' >> $PACKAGES
-
 echo "local packages backed up to [ ~/sync/archive/recovery/packages ]"
