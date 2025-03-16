@@ -1,4 +1,6 @@
 #!/bin/bash
+# TODO: generate a password with pwgen
+# TODO: add encryption for passwords file
 # uses wl-clipboard [https://github.com/bugaevc/wl-clipboard]
 
 PASSWORDS=/home/shinysocks/sync/archive/recovery/passwords 
