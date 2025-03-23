@@ -7,7 +7,6 @@ function vim { nvim $@; }
 
 # environment variables for functional editors
 export SDKMAN_DIR="$HOME/.sdkman"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH="/home/shinysocks/.local/bin:/usr/local/texlive/2024/bin/x86_64-linux$PATH"
 export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
@@ -21,7 +20,6 @@ export PS1="\[${l}[${b}\] \w \[${r}${l}] ${g}\$ ${r}\]"
 
 # custom aliases
 alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
-alias well='wine /home/shinysocks/.wine/drive_c/animal_well/animal_well.exe &'
 alias dots='/usr/bin/git --git-dir=$HOME/projects/dots --work-tree=$HOME'
 alias l='ls -1Aht'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; brew leaves > ~/projects/dots/brewlist'
