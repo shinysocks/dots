@@ -7,8 +7,10 @@ calc
 cava
 charmbracelet/tap/freeze
 croc
+deno
 dockly
 fd
+file-formula
 fzf
 gcc@11
 gdb
@@ -30,10 +32,12 @@ neovim
 nmap
 oha
 pandoc
+poppler
 proxychains-ng
 pwgen
 ripgrep
 rust
+sdkman/tap/sdkman-cli
 shellcheck
 speedtest-cli
 starship

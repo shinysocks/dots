@@ -1,14 +1,24 @@
-#!/bin/bash
+#!/bin/bash -i
 
-# builder -> https://github.com/shinysocks/dots
-cd ~/projects/dots
 
-# update and install necessary packages
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt install build-essential git curl cmake 
 
-mkdir -p projects .config/nvim .config/kitty
+#### update and install necessary packages ####
+# sudo apt-get update -y
+# sudo apt-get upgrade -y
+# sudo apt install build-essential git curl cmake 
+###############################################
+
+
+
+dots_url="https://github.com/shinysocks/dots"
+
+echo "making [~/projects], [~/.config/nvim], [~/.config/kitty]"
+mkdir -p ~/projects ~/.config/nvim ~/.config/kitty
+
+cd ~/projects/
+git clone $dots_url || exit 1
+
+cd dots
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -18,19 +28,31 @@ ln init.lua ~/.config/nvim/init.lua
 ln kitty.conf ~/.config/kitty/kitty.conf
 ln gitconfig ~/.gitconfig
 
-# install packages
-brew install $(cat brewlist)
-
-# start syncthing
-brew services start syncthing
-rm -rf ~/Sync
-
 # source bash config in bashrc
 echo >> ~/.bashrc
 echo "source ~/projects/dots/bash" >> ~/.bashrc
 
-# alert to complete syncthing setup
-echo "complete syncthing setup: http://localhost:8384"
+source ~/.bashrc
 
-# copy bash history from syncthing
+# tap for sdkman packages
+/home/linuxbrew/.linuxbrew/bin/brew tap sdkman/tap
+
+# install packages
+/home/linuxbrew/.linuxbrew/bin/brew install $(cat brewlist)
+
+# start syncthing
+/home/linuxbrew/.linuxbrew/bin/brew services start syncthing
+rm -rf ~/Sync
+
+# install spotdl
+python3 -m pip install spotdl --break-system-packages
+
+# alert to complete syncthing setup
+echo "TODO:"
+echo "  sdkman post setup"
+echo "  source ~/.bashrc"
+echo "  complete syncthing setup: http://localhost:8384"
+echo "  link bash.history from syncthing"
+echo "  link .git-credentials from syncthing"
+
 
