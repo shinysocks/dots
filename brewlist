@@ -9,6 +9,7 @@ charmbracelet/tap/freeze
 croc
 deno
 dockly
+entr
 fd
 file-formula
 fzf

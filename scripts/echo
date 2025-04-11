@@ -1,0 +1,23 @@
+#!/bin/bash
+# https://apple.stackexchange.com/questions/326388/terminal-command-to-record-audio-through-macbook-microphone
+
+# get device id
+ffmpeg -f alsa -list_devices true -i ""
+
+mkdir -p all
+n=0
+t=100 # length of initial recording plus a bit
+
+while 1
+do
+    # play clip.mp3 in the background
+    $(sleep 1 && mpv clip.mp3) &
+
+    # record for t seconds to out.mp3
+    ffmpeg -f avfoundation -i ":1" -t $t "$n.mp3"
+
+    cp "$n.mp3" all/
+    mv "$n.mp3" clip.mp3
+
+    ((n++))
+done
