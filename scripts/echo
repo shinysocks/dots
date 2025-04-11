@@ -1,5 +1,6 @@
 #!/bin/bash
 # https://apple.stackexchange.com/questions/326388/terminal-command-to-record-audio-through-macbook-microphone
+# https://ffmpeg.org/ffmpeg-devices.html#toc-avfoundation
 
 # get device id
 ffmpeg -f alsa -list_devices true -i ""
