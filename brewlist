@@ -41,7 +41,6 @@ rust
 sdkman/tap/sdkman-cli
 shellcheck
 speedtest-cli
-starship
 stress
 syncthing
 tectonic

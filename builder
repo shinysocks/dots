@@ -1,14 +1,6 @@
 #!/bin/bash -i
 
-
-
-#### update and install necessary packages ####
-# sudo apt-get update -y
-# sudo apt-get upgrade -y
-# sudo apt install build-essential git curl cmake 
-###############################################
-
-
+sudo apt install build-essential git curl cmake 
 
 dots_url="https://github.com/shinysocks/dots"
 
@@ -33,9 +25,6 @@ echo >> ~/.bashrc
 echo "source ~/projects/dots/bash" >> ~/.bashrc
 
 source ~/.bashrc
-
-# tap for sdkman packages
-/home/linuxbrew/.linuxbrew/bin/brew tap sdkman/tap
 
 # install packages
 /home/linuxbrew/.linuxbrew/bin/brew install $(cat brewlist)
