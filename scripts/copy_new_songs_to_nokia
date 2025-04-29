@@ -1,0 +1,17 @@
+#!/bin/bash
+
+IFS=$'\n'
+
+mkdir -p ~/nokia
+
+sudo mount -t drvfs D: ~/nokia
+
+for file in $(ls ~/sync/tunes/ -ht1 | head -n 200)
+do
+    cp -n ~/sync/tunes/"$file" ~/nokia/"$file"
+done
+
+sleep 5
+sudo umount ~/nokia && echo "unmounted nokia"
+
+rm -rf ~/nokia
