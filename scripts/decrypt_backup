@@ -1,0 +1,10 @@
+#!/bin/bash
+# rebuild pieces created by:
+#   `split -n 4 sync.bak`
+cat x* > sync.bak
+
+# password decrypt archive
+gpg -d sync.bak --output sync.bak.decrypt
+
+# extract tarball
+tar -xf sync.bak.decrypt
