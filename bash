@@ -9,13 +9,13 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PATH="~/projects/dots/scripts/:$PATH"
 export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
-export tunes="~/sync/tunes"
-export memories="~/sync/memories"
+export tunes="/home/shinysocks/sync/tunes/"
+export memories="/home/shinysocks/sync/memories/"
 export PROMPT_DIRTRIM=2
 
 # prompt styling
 l=$(tput setaf 5 bold);b=$(tput dim setaf 4 bold);r=$(tput sgr0);g=$(tput bold setaf 2)
-export PS1="\[${l}[${b}\] \w \[${r}${l}] ${g}\$ ${r}\]"
+export PS1="\[${l}\][\[${b}\] \w \[${r}${l}\]] \[${g}\]\$ \[${r}\]"
 
 # custom aliases
 alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
@@ -33,5 +33,3 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # unlimited history size
 HISTSIZE=-1
 HISTFILESIZE=-1
-
-echo -e "$(tput setaf 3 bold)$USER$(tput setaf 1).$(tput setaf 4)$HOSTNAME$(tput sgr0)\n"

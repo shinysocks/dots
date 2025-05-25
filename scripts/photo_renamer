@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd $memories
+cd ~/sync/memories/
 
 while :
 do
-    PREV_NAME=$(ls -1 | grep VID | shuf | head -n 1) # videos
+    PREV_NAME=$(ls -1 | grep Original | shuf | head -n 1)
 
     viu "$PREV_NAME"
     echo Current Name: $PREV_NAME
