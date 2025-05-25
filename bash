@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # custom functions
-function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes; }
+function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes --bitrate 192k; }
 function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
 
 # environment variables for functional editors

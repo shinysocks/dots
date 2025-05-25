@@ -6,9 +6,9 @@ mkdir -p ~/nokia
 
 sudo mount -t drvfs D: ~/nokia
 
-for file in $(ls ~/sync/tunes/ -ht1 | head -n 200)
+for file in $(ls ~/sync/tunes/ -ht1 | head -n 300)
 do
-    cp -n ~/sync/tunes/"$file" ~/nokia/"$file"
+    cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
 done
 
 sleep 5
