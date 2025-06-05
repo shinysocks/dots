@@ -3,8 +3,11 @@
 #   `split -n 4 sync.bak`
 cat x* > sync.bak
 
+# remove pieces
+rm -r xa*
+
 # password decrypt archive
-gpg -d sync.bak --output sync.bak.decrypt
+gpg -o sync.bak.decrypt -d sync.bak
 
 # extract tarball
 tar -xf sync.bak.decrypt

@@ -21,7 +21,7 @@ export PS1="\[${l}\][\[${b}\] \w \[${r}${l}\]] \[${g}\]\$ \[${r}\]"
 alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
 alias l='ls -Aht'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; brew leaves > ~/projects/dots/brewlist'
-# alias ssh="kitty +kitten ssh"
+alias ssh="kitty +kitten ssh"
 alias croc='croc --overwrite --yes'
 alias ..='cd ..'
 
@@ -29,6 +29,7 @@ alias ..='cd ..'
 export SDKMAN_DIR=$(/home/linuxbrew/.linuxbrew/bin/brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # unlimited history size
 HISTSIZE=-1
