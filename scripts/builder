@@ -13,7 +13,7 @@ git clone $dots_url || exit 1
 cd dots
 
 # install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # link configs from dots/
 ln init.lua ~/.config/nvim/init.lua

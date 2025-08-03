@@ -185,13 +185,6 @@ cmp.setup {
   }),
 }
 
-
--- telescope keybinds
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
-
-
 -- treesitter
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "git_config", "gitcommit", "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown", "nginx", "python", "robots", "sql", "ssh_config", "toml", "typescript", "vim", "xml", "yaml", "kotlin", "asm" },
@@ -282,11 +275,10 @@ require("catppuccin").setup({
   }
 )
 
-
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     if vim.fn.argv(0) == "" or vim.fn.argv(0) == "." then
-      require("telescope.builtin").find_files()
+        vim.cmd("Telescope find_files hidden=true")
     end
   end,
 })
@@ -308,6 +300,8 @@ vim.api.nvim_command("autocmd TermOpen * setlocal nonumber")
 vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no")
 
 -- custom keybindings
+vim.keymap.set("n", "<leader>f", "<Cmd>Telescope find_files hidden=true<CR>");
+vim.keymap.set("n", "<leader>g", "<Cmd>Telescope live_grep hidden=true<CR>");
 vim.keymap.set('t', '<esc>', "<C-\\><C-n>") -- fix terminal escape
 vim.keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>");
 vim.keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>");

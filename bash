@@ -21,7 +21,6 @@ export PS1="\[${l}\][\[${b}\] \w \[${r}${l}\]] \[${g}\]\$ \[${r}\]"
 alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
 alias l='ls -Aht'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; brew leaves > ~/projects/dots/brewlist'
-alias ssh="kitty +kitten ssh"
 alias croc='croc --overwrite --yes'
 alias ..='cd ..'
 

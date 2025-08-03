@@ -1,4 +1,6 @@
 aria2
+bash-completion@2
+bash-language-server
 bastet
 bat
 bluez
@@ -6,6 +8,7 @@ btop
 calc
 cava
 charmbracelet/tap/freeze
+colordiff
 croc
 deno
 dockly

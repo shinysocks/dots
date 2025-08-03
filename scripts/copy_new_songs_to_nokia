@@ -6,12 +6,16 @@ mkdir -p ~/nokia
 
 sudo mount -t drvfs D: ~/nokia
 
-for file in $(ls ~/sync/tunes/ -ht1 | head -n 400)
+for file in $(ls ~/sync/tunes/ -ht | head -n 100)
 do
     cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
 done
 
-sleep 5
-sudo umount ~/nokia && echo "unmounted nokia"
+for file in $(ls ~/sync/tunes/ | shuf | head -n 150)
+do
+    cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
+done
 
+sleep 10
+sudo umount ~/nokia && echo "unmounted nokia"
 rm -rf ~/nokia
