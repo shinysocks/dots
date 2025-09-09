@@ -1,7 +1,20 @@
 #!/bin/bash
 
 # custom functions
-function spotdl { python3 -m spotdl "$1" --output ~/sync/tunes --bitrate 192k --lyrics genius; }
+function spotdl {
+    CURRENT=$(pwd)
+
+    python3 -m spotdl "$1" --output ~/sync/tunes/{duration}.{artist}.{title}.{output-ext} --bitrate 128k --lyrics genius
+    cd ~/sync/tunes
+
+    LATEST="$(ls -ht | head -n 1)" ; mv "$LATEST" "${LATEST// /.}"
+    LATEST="$(ls -ht | head -n 1)" ; mv "$LATEST" "${LATEST// /.}"
+
+    rm -f .spotdl-cache
+
+    cd $CURRENT
+}
+
 function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
 
 # environment variables for functional editors

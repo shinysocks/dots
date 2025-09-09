@@ -12,6 +12,7 @@ colordiff
 croc
 deno
 dockly
+dos2unix
 entr
 fd
 file-formula
@@ -20,6 +21,7 @@ gcc@11
 gdb
 gedit
 gh
+git
 gradle
 gum
 htop
@@ -52,6 +54,7 @@ tldr
 tree
 typescript-language-server
 uv
+vim
 viu
 vscode-langservers-extracted
 wget
