@@ -29,6 +29,7 @@ libheif
 lolcat
 lynx
 man-db
+marp-cli
 micro
 moon-buggy
 mpv
@@ -42,13 +43,13 @@ poppler
 proxychains-ng
 pwgen
 ripgrep
+rsync
 rust
 sdkman/tap/sdkman-cli
 shellcheck
 sox
 speedtest-cli
 stress
-syncthing
 tectonic
 tldr
 tree

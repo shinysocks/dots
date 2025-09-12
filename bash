@@ -36,6 +36,7 @@ alias l='ls -Aht'
 alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; brew leaves > ~/projects/dots/brewlist'
 alias croc='croc --overwrite --yes'
 alias ..='cd ..'
+alias rsync='rsync -azP ~/sync/ shinysocks@192.168.0.121:/home/shinysocks/sync'
 
 # load sdkman & homebrew
 export SDKMAN_DIR=$(/home/linuxbrew/.linuxbrew/bin/brew --prefix sdkman-cli)/libexec

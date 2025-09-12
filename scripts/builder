@@ -37,11 +37,7 @@ rm -rf ~/Sync
 python3 -m pip install spotdl --break-system-packages
 
 # alert to complete syncthing setup
-echo "TODO:"
-echo "  sdkman post setup"
-echo "  source ~/.bashrc"
-echo "  complete syncthing setup: http://localhost:8384"
-echo "  link bash.history from syncthing"
-echo "  link .git-credentials from syncthing"
+echo "need to source ~/.bashrc"
+# run rsync and link bash.history and .git-credentials
 
 
