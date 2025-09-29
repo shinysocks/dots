@@ -25,6 +25,7 @@ export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
 export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
 export PROMPT_DIRTRIM=2
+export TEAMH="/mnt/c/Users/dinann/Desktop/teamh/"
 
 # prompt styling
 l=$(tput setaf 5 bold);b=$(tput dim setaf 4 bold);r=$(tput sgr0);g=$(tput bold setaf 2)
