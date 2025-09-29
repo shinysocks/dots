@@ -8,12 +8,7 @@ sudo mount -t drvfs D: ~/nokia
 
 rm -rf ~/nokia/Audio/* && echo "erased current nokia songs"
 
-for file in $(ls ~/sync/tunes/ -ht | head -n 60)
-do
-    cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
-done
-
-for file in $(ls ~/sync/tunes/ | shuf | head -n 90)
+for file in $(ls ~/sync/tunes/ -ht | head -n 100)
 do
     cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
 done
