@@ -1,16 +1,12 @@
 #!/bin/bash -i
 
-sudo apt install build-essential git curl cmake 
+# this script should be run from the "dots" repository root.
 
-dots_url="https://github.com/shinysocks/dots"
+# install essentials
+sudo apt install build-essential curl cmake 
 
-echo "making [~/projects], [~/.config/nvim], [~/.config/kitty]"
+# create necessary directories
 mkdir -p ~/projects ~/.config/nvim ~/.config/kitty
-
-cd ~/projects/
-git clone $dots_url || exit 1
-
-cd dots
 
 # install homebrew
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -27,17 +23,11 @@ echo "source ~/projects/dots/bash" >> ~/.bashrc
 source ~/.bashrc
 
 # install packages
-/home/linuxbrew/.linuxbrew/bin/brew install $(cat brewlist)
-
-# start syncthing
-/home/linuxbrew/.linuxbrew/bin/brew services start syncthing
-rm -rf ~/Sync
+/home/linuxbrew/.linuxbrew/bin/brew install "$(cat brewlist)"
 
 # install spotdl
 python3 -m pip install spotdl --break-system-packages
 
-# alert to complete syncthing setup
 echo "need to source ~/.bashrc"
-# run rsync and link bash.history and .git-credentials
-
+echo "run rsync and link bash.history and .git-credentials"
 
