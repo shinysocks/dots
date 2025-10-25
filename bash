@@ -1,18 +1,17 @@
 #!/bin/bash
 
-# custom functions
-function spotdl {
+function dl {
     CURRENT=$(pwd)
+    cd ~/sync/tunes/ || exit
 
-    python3 -m spotdl "$1" --output ~/sync/tunes/{duration}.{artist}.{title}.{output-ext} --bitrate 128k --lyrics genius
-    cd ~/sync/tunes
+    uv run yt-dlp "$1" -x --audio-format mp3 -o "%(duration)s.%(artist)s.%(track)s.%(ext)s"
 
-    LATEST="$(ls -ht | head -n 1)" ; mv "$LATEST" "${LATEST// /.}"
-    LATEST="$(ls -ht | head -n 1)" ; mv "$LATEST" "${LATEST// /.}"
+    for _ in {1..5};
+    do
+        LATEST="$(ls -ht | head -n 1)" ; mv "$LATEST" "${LATEST// /.}";
+    done
 
-    rm -f .spotdl-cache
-
-    cd $CURRENT
+    cd "$CURRENT" || exit
 }
 
 function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
