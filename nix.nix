@@ -98,6 +98,12 @@
       alejandra
       yt-dlp
       cron
+      libheif
+      gnumake
+      gnutar
+      nettools
+      openssl
+      procps
     ];
   };
 
