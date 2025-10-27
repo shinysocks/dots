@@ -1,9 +1,0 @@
-#!/bin/bash
-# TODO: generate a password with pwgen
-# TODO: add encryption for passwords file
-
-PASSWORDS=~/sync/recovery/passwords 
-
-INFO=$(sudo -k cat $PASSWORDS | grep -m 1 $1)
-echo -n $INFO | cut -d "|" -f2 | cat
-

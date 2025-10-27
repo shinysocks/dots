@@ -14,17 +14,61 @@ function dl {
     cd "$CURRENT" || exit
 }
 
-function upload { curl -# https://shinysocks.net/up -T "$1" -H "name: $1" | cat; }
+function commit {
+    git status &> /dev/null
 
-# environment variables for functional editors
-export SDKMAN_DIR="$HOME/.sdkman"
-export PATH="~/projects/dots/scripts/:$PATH"
-export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
-export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
+    if [ $? -eq 0 ]; then
+
+      gum style $(git branch --show-current) --foreground="#50C878"
+      echo
+      git status -s
+      git add .
+
+      CHANGES="$(echo $(git status -s | wc -l))"
+      MESSAGE=$(gum input --prompt "commit: " --placeholder "made changes to $CHANGES files..")
+
+      gum confirm "push $CHANGES files to remote?" --affirmative="send it!" --negative="nevermind" \
+      && git commit -q -m "$MESSAGE" && gum spin --title "pushing.." git push || git restore --staged .
+
+    else
+      gum style "there's no git repo here" --foreground="#F38BA8"
+    fi
+
+    echo done.
+}
+
+function passme {
+    # TODO: generate a password with pwgen
+    # TODO: add encryption for passwords file
+
+    PASSWORDS=~/sync/recovery/passwords 
+
+    INFO=$(sudo -k cat $PASSWORDS | grep -m 1 $1)
+    echo -n $INFO | cut -d "|" -f2 | cat
+}
+
+function copy_songs_to_nokia {
+    IFS=$'\n';
+
+    mkdir -p ~/nokia
+
+    sudo mount -t drvfs D: ~/nokia
+
+    rm -rf ~/nokia/Audio/* && echo "erased current nokia songs"
+
+    for file in $(ls ~/sync/tunes/ -ht | head -n 100)
+    do
+        cp -v -n ~/sync/tunes/"$file" ~/nokia/Audio/"$file"
+    done
+
+    sleep 10
+    sudo umount ~/nokia && echo "unmounted nokia"
+    rm -rf ~/nokia
+}
+
+
 export tunes="/home/shinysocks/sync/tunes/"
 export memories="/home/shinysocks/sync/memories/"
-export PROMPT_DIRTRIM=2
-export TEAMH="/mnt/c/Users/dinann/Desktop/teamh/"
 
 # prompt styling
 l=$(tput setaf 5 bold);b=$(tput dim setaf 4 bold);r=$(tput sgr0);g=$(tput bold setaf 2)
@@ -33,17 +77,10 @@ export PS1="\[${l}\][\[${b}\] \w \[${r}${l}\]] \[${g}\]\$ \[${r}\]"
 # custom aliases
 alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
 alias l='ls -Aht'
-alias update='sudo apt update -y ; sudo apt upgrade -y; sudo apt autoremove -y ; brew upgrade ; brew cleanup ; brew leaves > ~/projects/dots/brewlist'
 alias croc='croc --overwrite --yes'
 alias ..='cd ..'
 alias rsync='rsync -azP --delete /home/shinysocks/sync/ shinysocks@pie:/home/shinysocks/sync/'
 alias recentsongs='ls -ht ~/sync/tunes | head -n 15'
-
-# load sdkman & homebrew
-export SDKMAN_DIR=$(/home/linuxbrew/.linuxbrew/bin/brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # unlimited history size
 HISTSIZE=-1

@@ -60,8 +60,7 @@ require('mason').setup({
 
 local lsp_servers = {
     'bashls', 'kotlin_lsp', 'cssls',
-    'docker_compose_language_service',
-    'dockerls', 'html', 'jsonls', 'lua_ls',
+    'html', 'jsonls', 'lua_ls', 'alejandra',
     'texlab', 'yamlls', 'jdtls', 'ts_ls'
 }
 
@@ -112,7 +111,7 @@ require("nvim-treesitter.configs").setup({
         "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "git_config", "gitcommit",
         "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown",
         "nginx", "python", "robots", "sql", "ssh_config", "toml", "typescript", "vim", "xml",
-        "yaml", "kotlin", "asm"
+        "yaml", "kotlin", "asm", "nix"
     },
     sync_install = false,
     highlight = { enable = true },
