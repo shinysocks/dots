@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function dl {
     CURRENT=$(pwd)
@@ -19,12 +19,12 @@ function commit {
 
     if [ $? -eq 0 ]; then
 
-      gum style $(git branch --show-current) --foreground="#50C878"
+      gum style "$(git branch --show-current)" --foreground="#50C878"
       echo
       git status -s
       git add .
 
-      CHANGES="$(echo $(git status -s | wc -l))"
+      CHANGES="$(git status -s | wc -l)"
       MESSAGE=$(gum input --prompt "commit: " --placeholder "made changes to $CHANGES files..")
 
       gum confirm "push $CHANGES files to remote?" --affirmative="send it!" --negative="nevermind" \
