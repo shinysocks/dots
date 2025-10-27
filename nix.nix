@@ -97,6 +97,7 @@
       kotlin-language-server
       alejandra
       yt-dlp
+      cron
     ];
   };
 
