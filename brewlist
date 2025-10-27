@@ -36,6 +36,7 @@ ripgrep
 rsync
 sdkman/tap/sdkman-cli
 shellcheck
+signal-cli
 speedtest-cli
 stress
 tectonic
