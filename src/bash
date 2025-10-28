@@ -66,22 +66,5 @@ function copy_songs_to_nokia {
     rm -rf ~/nokia
 }
 
-
-export tunes="/home/shinysocks/sync/tunes/"
-export memories="/home/shinysocks/sync/memories/"
-
-# prompt styling
-l=$(tput setaf 5 bold);b=$(tput dim setaf 4 bold);r=$(tput sgr0);g=$(tput bold setaf 2)
-export PS1="\[${l}\][\[${b}\] \w \[${r}${l}\]] \[${g}\]\$ \[${r}\]"
-
-# custom aliases
-alias globalprotect='sudo gpclient --fix-openssl connect vpn.msoe.edu'
-alias l='ls -Aht'
-alias croc='croc --overwrite --yes'
-alias ..='cd ..'
-alias rsync='rsync -azP --delete /home/shinysocks/sync/ shinysocks@pie:/home/shinysocks/sync/'
-alias recentsongs='ls -ht ~/sync/tunes | head -n 15'
-
-# unlimited history size
 HISTSIZE=-1
 HISTFILESIZE=-1

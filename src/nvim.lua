@@ -41,7 +41,7 @@ vim.diagnostic.config({ virtual_text = true })
 -- autoclose setup
 require("autoclose").setup({
     options = {
-        disabled_filetypes = { "text", "latex", "texlab", "tex" },
+        disabled_filetypes = { "text", "latex", "texlab", "tex", "nix" },
         pair_spaces = true,
         auto_indent = true,
     },
@@ -60,7 +60,7 @@ require('mason').setup({
 
 local lsp_servers = {
     'bashls', 'kotlin_lsp', 'cssls',
-    'html', 'jsonls', 'lua_ls', 'alejandra',
+    'html', 'jsonls', 'lua_ls',
     'texlab', 'yamlls', 'jdtls', 'ts_ls'
 }
 

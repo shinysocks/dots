@@ -41,6 +41,20 @@
     PATH = "$HOME/projects/dots/scripts/:$PATH";
   };
 
+  programs.bash = {
+    shellAliases = {
+      ".." = "cd ..";
+      rsync = "rsync -azP --delete $HOME/sync/ shinysocks@pie:$HOME/sync/";
+      recentsongs = "ls -ht $HOME/sync/tunes | head -n 30";
+    };
+    promptInit = ''
+      l=$(tput setaf 5 bold);b=$(tput dim setaf 4 bold);r=$(tput sgr0);g=$(tput bold setaf 2);
+      export PS1="\[$l\][\[$b\] \w \[$r$l\]] \[$g\]\$ \[$r\]";
+    '';
+
+    interactiveShellInit = ". $HOME/projects/dots/src/bash";
+  };
+
   users.users.shinysocks = {
     shell = pkgs.bash;
     isNormalUser = true;
@@ -104,6 +118,7 @@
       nettools
       openssl
       procps
+      ladybird
     ];
   };
 
