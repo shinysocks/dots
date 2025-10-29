@@ -9,7 +9,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "shinybox";
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
@@ -122,13 +122,9 @@
     ];
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  services.desktopManager.cosmic.xwayland.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -141,7 +137,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # services
   services.openssh.enable = true;
   services.printing.enable = true;
 
