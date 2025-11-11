@@ -111,7 +111,7 @@ require("nvim-treesitter.configs").setup({
         "bash", "c", "c_sharp", "cpp", "css", "csv", "dockerfile", "git_config", "gitcommit",
         "gitignore", "html", "http", "java", "javascript", "json", "latex", "lua", "markdown",
         "nginx", "python", "robots", "sql", "ssh_config", "toml", "typescript", "vim", "xml",
-        "yaml", "kotlin", "asm", "nix"
+        "yaml", "kotlin", "asm", "nix", "i3"
     },
     sync_install = false,
     highlight = { enable = true },

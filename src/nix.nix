@@ -119,12 +119,19 @@
       openssl
       procps
       ladybird
+      dmenu
+      feh
     ];
   };
 
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
-  services.desktopManager.cosmic.xwayland.enable = true;
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    windowManager.i3.enable = true;
+    displayManager.lightdm.enable = true;
+    displayManager.defaultSession = "none+i3";
+    desktopManager.xterm.enable = false;
+  };
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

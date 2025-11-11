@@ -1,9 +1,13 @@
-all: 
+all: i3 src/nix.nix
 	alejandra src/nix.nix
 	sudo nixos-rebuild switch
 
+i3:
+	i3 reload
+
 system:
 	mkdir -p ~/projects ~/.config/nvim ~/.config/kitty
+	ln src/i3.conf ~/.config/i3/config
 	ln src/nvim.lua ~/.config/nvim/init.lua
 	ln src/kitty.conf ~/.config/kitty/kitty.conf
 	ln src/gitconfig ~/.gitconfig
