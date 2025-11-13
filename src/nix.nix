@@ -128,7 +128,7 @@
     enable = true;
     layout = "us";
     windowManager.i3.enable = true;
-    displayManager.lightdm.enable = true;
+    displayManager.gdm.enable = true;
     displayManager.defaultSession = "none+i3";
     desktopManager.xterm.enable = false;
   };

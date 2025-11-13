@@ -1,4 +1,4 @@
-all: i3 src/nix.nix
+all: src/nix.nix
 	alejandra src/nix.nix
 	sudo nixos-rebuild switch
 
