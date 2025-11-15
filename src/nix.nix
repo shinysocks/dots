@@ -119,9 +119,8 @@
       openssl
       procps
       ladybird
-      dmenu
       feh
-      rofi
+      dmenu
     ];
   };
 
