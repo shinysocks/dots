@@ -1,9 +1,6 @@
 all: src/nix.nix
-	alejandra src/nix.nix
+	alejandra -q src/nix.nix
 	sudo nixos-rebuild switch
-
-i3:
-	i3 reload
 
 system:
 	mkdir -p ~/projects ~/.config/nvim ~/.config/kitty

@@ -124,12 +124,15 @@
     ];
   };
 
+  programs.steam = {
+    enable = true;
+  };
+
   services.xserver = {
     enable = true;
-    layout = "us";
+    xkb.layout = "us";
     windowManager.i3.enable = true;
     displayManager.startx.enable = true;
-    # displayManager.defaultSession = "none+i3";
     desktopManager.xterm.enable = false;
   };
 
@@ -137,7 +140,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -g 'can you guess my password?' --remember --time --asterisks --cmd 'startx'";
+        command = "${pkgs.tuigreet}/bin/tuigreet -g 'can you guess my password?' --remember --time --asterisks --cmd 'startx'";
         user = "greeter";
       };
     };
