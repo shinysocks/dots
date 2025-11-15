@@ -121,6 +121,7 @@
       ladybird
       dmenu
       feh
+      rofi
     ];
   };
 
