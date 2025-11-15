@@ -128,9 +128,19 @@
     enable = true;
     layout = "us";
     windowManager.i3.enable = true;
-    displayManager.gdm.enable = true;
-    displayManager.defaultSession = "none+i3";
+    displayManager.startx.enable = true;
+    # displayManager.defaultSession = "none+i3";
     desktopManager.xterm.enable = false;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -g 'can you guess my password?' --remember --time --asterisks --cmd 'startx'";
+        user = "greeter";
+      };
+    };
   };
 
   services.pulseaudio.enable = false;

@@ -7,6 +7,7 @@ i3:
 
 system:
 	mkdir -p ~/projects ~/.config/nvim ~/.config/kitty
+	echo "exec i3" >> ~/.xinitrc
 	ln src/i3.conf ~/.config/i3/config
 	ln src/nvim.lua ~/.config/nvim/init.lua
 	ln src/kitty.conf ~/.config/kitty/kitty.conf
