@@ -1,0 +1,23 @@
+[user]
+	name = Noah Dinan
+	email = noah@shinysocks.net
+	username = shinysocks
+	
+[core]
+	autocrlf = input
+	compression = 0
+	editor = nvim
+	
+[credential]
+	helper = store
+	
+[init]
+	defaultBranch = main
+	
+[https]
+	postBuffer = 2097152000
+
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
