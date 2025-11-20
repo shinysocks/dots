@@ -5,9 +5,12 @@
 }: {
   imports = [./hardware-configuration.nix];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  services.logind.lidSwitchExternalPower = "ignore";
+
+  services.xserver.xrandrHeads = [
+    "DP-1"
+  ];
 
   networking.hostName = "shinybox";
   networking.networkmanager.enable = true;
@@ -123,7 +126,10 @@
       dmenu
       flameshot
       rust-analyzer
-      tuigreet
+      cargo
+      alsa-utils
+      bluetui
+      bluez
     ];
   };
 
@@ -136,6 +142,16 @@
     windowManager.i3.enable = true;
     displayManager.startx.enable = true;
     desktopManager.xterm.enable = false;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -g 'this machine kills facists' --remember --time --asterisks --cmd 'startx'";
+        user = "greeter";
+      };
+    };
   };
 
   services.pulseaudio.enable = false;
@@ -152,6 +168,15 @@
   services.openssh.enable = true;
   services.printing.enable = true;
 
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = false;
+
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez;
+  };
+
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
@@ -162,16 +187,6 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet -g 'this machine kills facists' --remember --time --asterisks --cmd 'startx'";
-        user = "greeter";
-      };
-    };
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?
