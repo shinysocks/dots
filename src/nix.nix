@@ -8,10 +8,6 @@
   boot.loader.systemd-boot.enable = true;
   services.logind.lidSwitchExternalPower = "ignore";
 
-  services.xserver.xrandrHeads = [
-    "DP-1"
-  ];
-
   networking.hostName = "shinybox";
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
