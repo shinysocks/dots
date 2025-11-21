@@ -127,6 +127,8 @@
       alsa-utils
       bluetui
       bluez
+      libinput
+      viu
     ];
   };
 
@@ -141,11 +143,17 @@
     desktopManager.xterm.enable = false;
   };
 
+  services.libinput = {
+    enable = true;
+    mouse.accelSpeed = "-7.0";
+    mouse.accelProfile = "adaptive";
+  };
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -g 'this machine kills facists' --remember --time --asterisks --cmd 'startx'";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -g 'this machine kills facists' --remember --time --asterisks --cmd 'startx >/dev/null 2>&1'";
         user = "greeter";
       };
     };
