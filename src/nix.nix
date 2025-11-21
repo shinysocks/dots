@@ -6,6 +6,7 @@
   imports = [./hardware-configuration.nix];
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 0;
   services.logind.lidSwitchExternalPower = "ignore";
 
   networking.hostName = "shinybox";

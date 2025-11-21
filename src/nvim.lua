@@ -61,7 +61,7 @@ require('mason').setup({
 local lsp_servers = {
     'bashls', 'kotlin_lsp', 'cssls',
     'html', 'jsonls', 'lua_ls',
-    'texlab', 'yamlls', 'jdtls', 'ts_ls', 'rust-analyzer'
+    'texlab', 'yamlls', 'jdtls', 'ts_ls', 'rust_analyzer'
 }
 
 require("mason-lspconfig").setup {
