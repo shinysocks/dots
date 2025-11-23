@@ -145,7 +145,7 @@
 
   services.libinput = {
     enable = true;
-    mouse.accelSpeed = "-7.0";
+    mouse.accelSpeed = "-10.0";
     mouse.accelProfile = "adaptive";
   };
 
